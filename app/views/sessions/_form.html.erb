@@ -1,0 +1,14 @@
+<%= form_for(:session, url: login_path) do |form| %>
+  
+<div>  
+  <%= form.label :email, "電子信箱" %>
+  <%= form.text_field :email %>
+</div>  
+<div>  
+  <%= form.label :password, "密碼" %>
+  <%= form.text_field :password %>
+</div> 
+
+<%= form.submit %>
+  
+<% end %>

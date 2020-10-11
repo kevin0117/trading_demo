@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
-  get 'bootstrap/index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # Users
+  get 'sign_up', to: 'users#new'
+  resources :users, except: [:new]
+
+  # Sessions
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
+  root "bootstrap#index"
 end
