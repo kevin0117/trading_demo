@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   # Commodities
-  resources :commodities, except: [:show]
-
+  resources :commodities, except: [:show] do
+    member do
+      post 'deal', to: 'commodities#deal'
+    end
+  end
   root "bootstrap#index"
 end
