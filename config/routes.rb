@@ -14,5 +14,10 @@ Rails.application.routes.draw do
       post 'deal', to: 'commodities#deal'
     end
   end
+
+  # Sidekiq
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+  
   root "bootstrap#index"
 end
