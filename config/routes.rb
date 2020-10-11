@@ -8,5 +8,11 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
+  # Commodities
+  resources :commodities, except: [:show] do
+    member do
+      post 'deal', to: 'commodities#deal'
+    end
+  end
   root "bootstrap#index"
 end

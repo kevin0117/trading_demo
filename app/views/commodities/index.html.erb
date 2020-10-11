@@ -1,0 +1,56 @@
+<h1>即時交易看板</h1>
+
+<div class="row">
+  <table class="table table-hover table-light table-bordered rounded mb-5">
+    <thead class='thead-dark'>
+      <tr>
+        <th>ID</th>
+        <th>委託買賣</th>
+        <th>名稱</th>
+        <th>數量</th>
+        <th>委託價格</th>
+        <th>合計</th>
+        <th>下單</th> 
+      </tr>
+    </thead>
+    
+    <tbody>
+        <% @commodities.available.each do |commodity| %>
+          <%= render 'commodities/commodity', commodity: commodity %>
+        <% end %>
+    </tbody>
+  </table>
+</div>
+ 
+<div class="info">
+
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="account-tab" data-toggle="tab" href="#account" role="tab" aria-controls="account" aria-selected="true">待成交</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="add-tab" data-toggle="tab" href="#add" role="tab" aria-controls="add" aria-selected="false">新增掛單</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="deal-tab" data-toggle="tab" href="#deal" role="tab" aria-controls="deal" aria-selected="false">已成交</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="cancel-tab" data-toggle="tab" href="#cancel" role="tab" aria-controls="cancel" aria-selected="false">已取消</a>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+      <%= render 'open', commodity: @commodity %>
+    </div>
+    <div class="tab-pane fade" id="add" role="tabpanel" aria-labelledby="add-tab">
+      <%= render 'form', commodity: @commodity %>
+    </div>
+    <div class="tab-pane fade" id="deal" role="tabpanel" aria-labelledby="deal-tab">
+      <%= render 'closed', commodity: @commodity %>
+    </div>
+    <div class="tab-pane fade" id="cancel" role="tabpanel" aria-labelledby="cancel-tab">
+      <%= render 'cancelled', commodity: @commodity %>
+    </div>
+  </div>
+</div>
