@@ -1,0 +1,12 @@
+<tr>
+  <td><%= commodity.id %></td>
+  <td><%= print_action(commodity.action) %></td>
+  <td><%= commodity.title %></td>
+  <td><%= commodity.quantity %></td>
+  <td>$<%= commodity.price %></td>
+  <td>$<%= commodity.total_price %></td>
+  <td><%= link_to print_deal_action(commodity.action), deal_commodity_path(commodity), method: :post, data: { confirm: "確認要賣出嗎？" }, class: 'btn btn-outline-primary' %></td>
+</tr>
+
+
+
