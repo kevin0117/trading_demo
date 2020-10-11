@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  get 'bootstrap/index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # Users
+  get 'sign_up', to: 'users#new'
+  resources :users, except: [:new]
+
+  root "bootstrap#index"
 end
