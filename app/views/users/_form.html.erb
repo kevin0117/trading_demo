@@ -1,0 +1,17 @@
+<h3> <%= error_message %> </h3>
+
+<%= form_with model: user do |form| %>
+  <div>  
+    <%= form.label :username, "使用者名稱" %>
+    <%= form.text_field :username %>
+  </div> 
+  <div>  
+    <%= form.label :email, "電子信箱" %>
+    <%= form.text_field :email %>
+  </div> 
+  <div>  
+    <%= form.label :password, "密碼" %>
+    <%= form.text_field :password %>
+  </div> 
+  <%= form.submit %>
+<% end %>
