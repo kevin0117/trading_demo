@@ -15,6 +15,7 @@ class CommoditiesController < ApplicationController
     @commodity.user_id = current_user.id
     
     if @commodity.save
+      SendCommodityWorker.perform_async(@commodity.id)
       redirect_to commodities_path, notice: "新增成功"
     else
       render :new
@@ -31,6 +32,7 @@ class CommoditiesController < ApplicationController
 
   def destroy
     if @commodity.may_cancel?
+      RemoveCommodityWorker.perform_async(@commodity.id)
       @commodity.destroy
       @commodity.cancel!
       redirect_to commodities_path, notice: "取消成功"
@@ -44,6 +46,8 @@ class CommoditiesController < ApplicationController
     if @commodity && @commodity.trade!
       @commodity.closer_id = current_user.id
       @commodity.save
+      RemoveCommodityWorker.perform_async(@commodity.id)
+
       # 寄給結單使用者
       MailWorker.perform_async(@commodity.closer_id)
       # 寄給掛單委託者
