@@ -16,7 +16,7 @@
   
   <tbody>
     <% current_user.commodities.available.each do |commodity| %>
-    <tr>
+    <tr class='commodity_<%= commodity.id %>'>
       <td><%= commodity.id %></td>
       <td><%= commodity.title %></td>
       <td><%= commodity.price %></td>
