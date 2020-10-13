@@ -8,7 +8,7 @@ consumer.subscriptions.create("BoardChannel", {
   
   received(data) {
     // Called when there's incoming data on the websocket for this channel
-    console.log(data.html)
+    
     const commodityContainer = document.getElementById('commodities')
     const closed_commodityContainer = document.getElementById('closed_commodities')
     const commodityRecords = document.getElementsByClassName(data.deal)
@@ -27,9 +27,6 @@ consumer.subscriptions.create("BoardChannel", {
 
     }
     else
-      // console.log(data.html)
-      console.log(commodityContainer.innerHTML)
-
       commodityContainer.innerHTML = data.html + commodityContainer.innerHTML; 
   }
 });
