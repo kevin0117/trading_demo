@@ -14,7 +14,7 @@
       </tr>
     </thead>
     
-    <tbody>
+    <tbody id="commodities">
         <% @commodities.available.each do |commodity| %>
           <%= render 'commodities/commodity', commodity: commodity %>
         <% end %>
